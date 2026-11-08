@@ -1,6 +1,8 @@
 import autolens as al
 import autolens.plot as aplt
 
+from autologo.strokes import PYAUTO_STROKES, light_profiles_from
+
 # grid = al.Grid2DIterate.uniform(
 #     shape_native=(150, 150),
 #     pixel_scales=0.05,
@@ -15,144 +17,8 @@ grid = al.Grid2D.uniform(
 
 source_galaxy = al.Galaxy(
     redshift=1.0,
-    light_0=al.lp.Sersic(
-        centre=(1.5, -3),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=110.0),
-        intensity=0.6,
-        effective_radius=1.0,
-        sersic_index=2.5,
-    ),
-    light_1=al.lp.Sersic(
-        centre=(1, -2.8),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=110.0),
-        intensity=0.6,
-        effective_radius=1.0,
-        sersic_index=2.5,
-    ),
-    light_2=al.lp.Sersic(
-        centre=(1.8, -2.7),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.3, angle=-15.0),
-        intensity=0.5,
-        effective_radius=1.1,
-        sersic_index=2.5,
-    ),
-    light_3=al.lp.Sersic(
-        centre=(1.5, -2.6),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.3, angle=35.0),
-        intensity=0.5,
-        effective_radius=1.1,
-        sersic_index=2.5,
-    ),
-    light_4=al.lp.Sersic(
-        centre=(1.0, -2.0),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.25, angle=-35.0),
-        intensity=0.5,
-        effective_radius=1.2,
-        sersic_index=2.5,
-    ),
-    light_5=al.lp.Sersic(
-        centre=(1.1, -1.7),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=70.0),
-        intensity=0.5,
-        effective_radius=1.2,
-        sersic_index=2.5,
-    ),
-    light_6=al.lp.Sersic(
-        centre=(0.7, -1.85),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=70.0),
-        intensity=0.5,
-        effective_radius=1.2,
-        sersic_index=2.5,
-    ),
-    light_7=al.lp.Sersic(
-        centre=(0.9, -1),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=75.0),
-        intensity=0.4,
-        effective_radius=1.5,
-        sersic_index=2.5,
-    ),
-    light_8=al.lp.Sersic(
-        centre=(1.6, -0.8),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=75.0),
-        intensity=0.4,
-        effective_radius=1.3,
-        sersic_index=2.5,
-    ),
-    light_9=al.lp.Sersic(
-        centre=(0.9, -0.3),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=115.0),
-        intensity=0.4,
-        effective_radius=1.5,
-        sersic_index=2.5,
-    ),
-    light_10=al.lp.Sersic(
-        centre=(1.6, -0.6),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=115.0),
-        intensity=0.4,
-        effective_radius=1.3,
-        sersic_index=2.5,
-    ),
-    light_11=al.lp.Sersic(
-        centre=(1.2, -0.7),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.15, angle=0),
-        intensity=0.4,
-        effective_radius=1.3,
-        sersic_index=2.5,
-    ),
-    light_12=al.lp.Sersic(
-        centre=(1.1, 0.2),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.15, angle=100),
-        intensity=0.5,
-        effective_radius=1,
-        sersic_index=2.5,
-    ),
-    light_13=al.lp.Sersic(
-        centre=(0.8, 0.5),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.25, angle=-10),
-        intensity=0.4,
-        effective_radius=1.1,
-        sersic_index=2.5,
-    ),
-    light_14=al.lp.Sersic(
-        centre=(1.0, 0.7),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.15, angle=90),
-        intensity=0.5,
-        effective_radius=1.4,
-        sersic_index=2.5,
-    ),
-    light_15=al.lp.Sersic(
-        centre=(1.0, 1.3),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.15, angle=100),
-        intensity=0.5,
-        effective_radius=1.1,
-        sersic_index=2.5,
-    ),
-    light_16=al.lp.Sersic(
-        centre=(1.5, 1.1),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.15, angle=100),
-        intensity=0.5,
-        effective_radius=1.1,
-        sersic_index=2.5,
-    ),
-    light_17=al.lp.Sersic(
-        centre=(1.3, 1.45),
-        ell_comps=al.convert.ell_comps_from(axis_ratio=0.2, angle=10),
-        intensity=0.5,
-        effective_radius=0.7,
-        sersic_index=2.5,
-    ),
-    light_18=al.lp.SersicSph(
-        centre=(0.9, 2.2),
-        intensity=0.4,
-        effective_radius=6,
-        sersic_index=2.4,
-    ),
-    light_19=al.lp.SersicSph(
-        centre=(0.9, 2.2),
-        intensity=0.3,
-        effective_radius=1.1,
-        sersic_index=1.4,
-    ),
+    # "PyAuto" (light_0 ... light_19) is shared with the PyAutoGalaxy / PyAutoFit logos.
+    **light_profiles_from(PYAUTO_STROKES, al.lp),
     light_20=al.lp.Sersic(
         centre=(-1.3, -2.2),
         ell_comps=al.convert.ell_comps_from(axis_ratio=0.15, angle=100.0),
